@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+
 public class GunScript : MonoBehaviour {
 
     public AudioClip gunSound;
@@ -30,19 +32,23 @@ public class GunScript : MonoBehaviour {
 
 	}
 
-	// 銃をうつ時に行いたいことをこの中に書く
-	void Shot(){
-
+    // 銃をうつ時に行いたいことをこの中に書く
+    void Shot() {
+        
+         float distance = 100f;
         Vector3 center = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = Camera.main.ScreenPointToRay(center);
-        float distance = 100f;
-        if(Physics.Raycast(ray,out hit, distance))
+        RaycastHit hit;
+       
+        if (Physics.Raycast(ray, out hit, distance))
         {
             Instantiate(sparks, hit.point, Quaternion.identity);
             if (hit.collider.tag == "Enemy")
             {
-                hit.collider.SendMessage("Damege");
+                hit.collider.SendMessage("Damage");
             }
         }
+    }
+
 	}
-}
+

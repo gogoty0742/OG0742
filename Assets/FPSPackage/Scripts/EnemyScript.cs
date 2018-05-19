@@ -8,7 +8,7 @@ public class EnemyScript : MonoBehaviour {
 
 	// Playerにダメージを与えられた時
 	void Damage(){
-		enemyHP--; //体力を1減らす。
+		enemyHP-=1; //体力を1減らす。
 		// 体力がゼロになったら
 		if (enemyHP == 0) {
 			if (Bomb) {
